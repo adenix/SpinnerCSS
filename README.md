@@ -6,6 +6,8 @@ Spinner CSS is a loading spinner that is generated entirely in css.
 
 ### Example (Gif)
 
+CodePen: [SpinnerCSS](http://codepen.io/adenicboy/pen/jrAPmW)
+
 ![spinner](https://raw.githubusercontent.com/adenix/SpinnerCSS/master/spinner.gif)
 
 ### How to use with JavaScript
