@@ -1,0 +1,68 @@
+// -----[ Variables ]-----------------------------------------------------------
+$leaves: 12;
+$seconds: 1;
+
+$size: 200px;
+
+//  -----[ Mixins ]-------------------------------------------------------------
+@mixin prefix($declarations, $prefixes: webkit moz ms o) {
+  @each $property, $value in $declarations {
+    @each $prefix in $prefixes {
+      #{'-' + $prefix + '-' + $property}: $value;
+    }
+    // Output standard non-prefixed declaration
+    #{$property}: $value;
+  }
+}
+
+// -----[ Styles ]--------------------------------------------------------------
+@-webkit-keyframes spinner-pulse  {
+  0%  {
+    opacity: 1
+  }
+  100%  {
+    opacity: 0
+  }
+}
+
+@keyframes spinner-pulse  {
+  0%  {
+    opacity: 1
+  }
+  100%  {
+    opacity: 0
+  }
+}
+
+[spinner]  {
+  position: relative;
+  background: none;
+  width: $size;
+  height: $size;
+
+  transform:scale(1);
+
+  & > div {
+    @include prefix((animation: spinner-pulse #{$seconds}s linear infinite));
+
+    width: 14px;
+    height: 40px;
+    background: #3d82c4;
+    border-radius: 10px;
+    position: absolute;
+    left: 45%;
+    top: 40%;
+
+    @for $i from 1 through 12 {
+      $delay: -($seconds / 2) + (($i - 1) * ($seconds/$leaves));
+      $rotation: 0 + (($i - 1) * (360/$leaves));
+      $opacity: 1 - ((1/($leaves + 1)) * $i);
+
+      &:nth-of-type(#{$i}) {
+        opacity: $opacity;
+        @include prefix((animation-delay: #{$delay}s));
+        @include prefix((transform: rotate(#{$rotation}deg) translate(0, -60px)));
+      }
+    }
+  }
+}
