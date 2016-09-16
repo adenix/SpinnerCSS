@@ -4,6 +4,10 @@
 
 Spinner CSS is a loading spinner that is generated entirely in css.
 
+### Example (Gif)
+
+![spinner](https://raw.githubusercontent.com/adenix/SpinnerCSS/master/spinner.gif)
+
 ### How to use with JavaScript
 
 1) Include <code>spinner.css</code> near the bottom of head in your html
